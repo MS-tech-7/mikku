@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mikku — Skills • Opportunities • Together</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loader-card">
+      <img src="assets/mikku-logo.png" alt="Mikku logo" class="loader-logo">
+      <div class="loader-dots"><span></span><span></span><span></span></div>
+      <p>Getting opportunities ready...</p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <main id="authView" class="auth-shell">
+    <section class="auth-brand">
+      <div class="brand-pill">MIKKU</div>
+      <h1>Skills find opportunities.<br>Opportunities find you.</h1>
+      <p>A student-focused marketplace for services, small tasks and collaboration.</p>
+      <div class="auth-mascot-wrap">
+        <img src="assets/mikku-logo.png" alt="Mikku mascot" class="auth-logo">
+      </div>
+      <div class="feature-mini-grid">
+        <div>🎨 <b>Offer</b><small>Show your skills</small></div>
+        <div>🔎 <b>Find</b><small>Discover opportunities</small></div>
+        <div>🤝 <b>Collaborate</b><small>Work together</small></div>
+      </div>
+    </section>
+
+    <section class="auth-panel">
+      <div class="auth-tabs">
+        <button class="tab-btn active" data-tab="login">Login</button>
+        <button class="tab-btn" data-tab="register">Register</button>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <h2>Welcome back 👋</h2>
+        <p class="muted">Login with your Mikku username and password.</p>
+        <label>Username<input id="loginUsername" name="username" required autocomplete="username"></label>
+        <label>Password<input id="loginPassword" name="password" type="password" required autocomplete="current-password"></label>
+        <button class="primary-btn" type="submit">Login to Mikku →</button>
+        <div class="demo-note"><b>Demo:</b> student1 / student123</div>
+      </form>
+
+      <form id="registerForm" class="auth-form hidden">
+        <h2>Create your account</h2>
+        <p class="muted">Join as a student, teacher, society head or coordinator.</p>
+        <div class="form-grid two">
+          <label>Full name<input name="name" required></label>
+          <label>Username<input name="username" required minlength="3"></label>
+        </div>
+        <div class="form-grid two">
+          <label>Phone number<input name="phone" required inputmode="numeric" pattern="[0-9]{10}" maxlength="10" placeholder="10 digits"></label>
+          <label>Institution ID card no.<input name="idCard" required placeholder="e.g. GECB-IT-123"></label>
+        </div>
+        <div class="form-grid two">
+          <label>Role
+            <select name="role" required>
+              <option value="student">Student</option>
+              <option value="teacher">Teacher / Faculty</option>
+              <option value="society_head">Society / Club Head</option>
+            </select>
+          </label>
+          <label>Department<input name="department" placeholder="Information Technology"></label>
+        </div>
+        <div class="form-grid two">
+          <label>Year / Position<input name="year" placeholder="S3 / Faculty / Coordinator"></label>
+          <label>Password<input name="password" type="password" required minlength="6"></label>
+        </div>
+        <label>Skills <span class="hint">comma separated</span><input name="skills" placeholder="Design, Python, Video Editing"></label>
+        <button class="primary-btn" type="submit">Create Mikku account →</button>
+        <p class="tiny-note">For this academic prototype, phone/ID format is validated and stored. Real OTP/institution verification can be added later.</p>
+      </form>
+    </section>
+  </main>
+
+  <main id="appView" class="app-shell hidden">
+    <header class="topbar">
+      <div class="topbar-brand" id="homeBtn">
+        <img src="assets/mikku-logo.png" alt="Mikku" class="mini-logo">
+        <div><strong>mikku</strong><span>SKILLS • OPPORTUNITIES • TOGETHER</span></div>
+      </div>
+      <nav class="topnav">
+        <button data-section="home" class="nav-btn active">Home</button>
+        <button data-section="services" class="nav-btn">Services</button>
+        <button data-section="tasks" class="nav-btn">Tasks</button>
+        <button data-section="profile" class="nav-btn">Profile</button>
+      </nav>
+      <div class="user-menu">
+        <span id="userBadge">User</span>
+        <button id="logoutBtn" class="ghost-btn">Logout</button>
+      </div>
+    </header>
+
+    <section id="homeSection" class="page-section">
+      <div class="hero-card">
+        <div>
+          <span class="eyebrow">WELCOME TO MIKKU</span>
+          <h1 id="welcomeText">Find your next opportunity.</h1>
+          <p>Offer what you can do, post what you need, and collaborate with people around you.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" data-section="services">Explore Services</button>
+            <button class="secondary-btn" data-section="tasks">Find Tasks</button>
+          </div>
+        </div>
+        <img src="assets/mikku-logo.png" alt="Mikku mascot" class="hero-logo">
+      </div>
+
+      <div class="section-heading"><div><span class="eyebrow">YOUR MARKETPLACE</span><h2>How Mikku works</h2></div></div>
+      <div class="story-grid">
+        <article><span>1</span><h3>Offer Services</h3><p>List what you can do and set your starting price.</p></article>
+        <article><span>2</span><h3>Find Opportunities</h3><p>Search services or tasks using categories and keywords.</p></article>
+        <article><span>3</span><h3>Post a Task</h3><p>Tell the community what you need, your budget and deadline.</p></article>
+        <article><span>4</span><h3>Apply & Work</h3><p>Submit an offer, get assigned and track progress.</p></article>
+      </div>
+
+      <div class="dashboard-grid">
+        <div class="stat-card"><span>Services</span><b id="statServices">0</b></div>
+        <div class="stat-card"><span>Open Tasks</span><b id="statTasks">0</b></div>
+        <div class="stat-card"><span>Your Role</span><b id="statRole">Student</b></div>
+        <div class="stat-card"><span>Status</span><b>✓ Verified</b></div>
+      </div>
+    </section>
+
+    <section id="servicesSection" class="page-section hidden">
+      <div class="section-heading"><div><span class="eyebrow">MARKETPLACE</span><h2>Services students offer</h2></div><button id="showServiceForm" class="primary-btn">+ Offer a Service</button></div>
+      <div id="serviceFormCard" class="form-card hidden">
+        <form id="serviceForm">
+          <div class="form-grid two">
+            <label>Service title<input name="title" required placeholder="I will design an event poster"></label>
+            <label>Category<select name="category" required><option>Design</option><option>Video Editing</option><option>Web Development</option><option>Writing</option><option>Photography</option><option>Academic Help</option><option>Other</option></select></label>
+          </div>
+          <label>Description<textarea name="description" required rows="3"></textarea></label>
+          <div class="form-grid two"><label>Starting price ₹<input name="price" type="number" min="0" required></label><label>Skills<input name="skills" placeholder="Canva, Figma, Photoshop"></label></div>
+          <button class="primary-btn" type="submit">Publish Service</button>
+        </form>
+      </div>
+      <div class="filter-row"><input id="serviceSearch" placeholder="Search services or skills..."><select id="serviceCategory"><option value="">All categories</option><option>Design</option><option>Video Editing</option><option>Web Development</option><option>Writing</option><option>Photography</option><option>Academic Help</option></select><button id="serviceSearchBtn" class="secondary-btn">Search</button></div>
+      <div id="servicesList" class="card-grid"></div>
+    </section>
+
+    <section id="tasksSection" class="page-section hidden">
+      <div class="section-heading"><div><span class="eyebrow">OPPORTUNITIES</span><h2>Tasks & jobs</h2></div><button id="showTaskForm" class="primary-btn">+ Post a Task</button></div>
+      <div id="taskFormCard" class="form-card hidden">
+        <form id="taskForm">
+          <div class="form-grid two"><label>Task title<input name="title" required placeholder="Need a poster for our department event"></label><label>Category<select name="category" required><option>Design</option><option>Video Editing</option><option>Web Development</option><option>Writing</option><option>Photography</option><option>Academic Help</option><option>Other</option></select></label></div>
+          <label>Description<textarea name="description" required rows="3"></textarea></label>
+          <div class="form-grid two"><label>Budget ₹<input name="budget" type="number" min="0" required></label><label>Deadline<input name="deadline" type="date" required></label></div>
+          <button class="primary-btn" type="submit">Post Task</button>
+        </form>
+      </div>
+      <div class="filter-row"><input id="taskSearch" placeholder="Search tasks..."><select id="taskCategory"><option value="">All categories</option><option>Design</option><option>Video Editing</option><option>Web Development</option><option>Writing</option><option>Photography</option><option>Academic Help</option></select><button id="taskSearchBtn" class="secondary-btn">Search</button></div>
+      <div id="tasksList" class="card-grid"></div>
+    </section>
+
+    <section id="profileSection" class="page-section hidden">
+      <div class="section-heading"><div><span class="eyebrow">YOUR SPACE</span><h2>Profile</h2></div></div>
+      <div class="profile-layout">
+        <div class="profile-card">
+          <div class="avatar" id="profileAvatar">M</div><h2 id="profileName">Mikku User</h2><p id="profileRole">Student</p><div class="verified-pill">✓ Verified account</div>
+          <hr><p><b>Username:</b> <span id="profileUsername"></span></p><p><b>Phone:</b> <span id="profilePhone"></span></p><p><b>ID Card:</b> <span id="profileId"></span></p>
+        </div>
+        <div class="form-card"><form id="profileForm"><label>Full name<input name="name" id="profileNameInput" required></label><div class="form-grid two"><label>Department<input name="department" id="profileDepartment"></label><label>Year / Position<input name="year" id="profileYear"></label></div><label>Bio<textarea name="bio" id="profileBio" rows="4"></textarea></label><label>Skills <span class="hint">comma separated</span><input name="skills" id="profileSkills"></label><button class="primary-btn">Save Profile</button></form></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
